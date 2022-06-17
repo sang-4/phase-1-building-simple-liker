@@ -4,7 +4,30 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+document.addEventListener('DOMContentLoaded',function(){
+  const likeBtn=document.querySelector("li.like span")
+  likeBtn.addEventListener('click',e=>{e.preventDefaulten()
+  if(likeBtn.textContent===EMPTY_HEART){
+    mimicServerCall()
+    .then(()=>{
+      likeBtn.textContent=FULL_HEART
+      likeBtn.className='activated-heart'
+    })
+    .catch(error=>{
+      const modal=document.getElementById('modal')
+      modal.className='hidden'
+      modal.innerText=error
+      setTimeout(()=>modal.className='hidden',3000)
 
+  
+    })
+  } else{
+    likeBtn.textContent=EMPTY_HEART
+    likeBtn.classlist.remove('activated-heart')
+
+  }
+})
+})
 
 
 //------------------------------------------------------------------------------
